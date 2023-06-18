@@ -1,0 +1,4 @@
+Flask==2.2.2
+Pandas==2.0.2
+scikit_learn==1.2.2
+
