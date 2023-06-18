@@ -2,6 +2,9 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from pathlib import Path
+
+this_folder = Path(__file__).parent.resolve()
 
 def get_dystopic_country_prediction(gdp,
                                    social_support,
@@ -20,8 +23,8 @@ def get_dystopic_country_prediction(gdp,
                                    regional_indicator):
 
     # Read the dataset into a DataFrame
-    df_x = pd.read_csv('df_x.csv')
-    df_target = pd.read_csv('df_target.csv')
+    df_x = pd.read_csv(this_folder/'df_x.csv')
+    df_target = pd.read_csv(this_folder/'df_target.csv')
 
     # Split the dataset into input features (X) and target variable (y)
     X = df_x
