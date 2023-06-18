@@ -27,18 +27,21 @@
             margin-left: 8px !important;
             margin-right: 8px;
         }
+
     </style>
 </head>
 <body class="bg-light">
 
 <div class="container">
-<!--    HEADER -->
+    <!--    HEADER -->
     <div class="py-5 text-center">
         <h1>Dystopian Country Happiness Score Calculator</h1>
-        <p class="lead">Some explanation header</p>
+        <p class="lead">This Happiness score calculator uses machine learning linear regression on the 2021 World
+            Happiness Report dataset to find a happiness score for a dystopian country.</p>
+        <p><strong>Enjoy!</strong></p>
     </div>
 
-<!--    RESULTS -->
+    <!--    RESULTS -->
 
     {% if happiness_score: %}
     <div class="container">
@@ -48,159 +51,159 @@
     </div>
     {% endif %}
 
-<!--    FORM -->
+    <!--    FORM -->
 
     <form id="quizForm" class="card p-3 mb-5" method="POST">
         <div class="question input-group mb-3">
-            <label for="gdp" class="form-label text-decoration-underline" data-bs-toggle="tooltip"
-                    data-bs-title="GDP per capita is calculated by dividing the country's gross domestic product (GDP) by its total population at constant international dollar prices"
-                    data-bs-placement="left">GDP per capita:</label>
+            <label for="gdp" class="form-label text-decoration-underline" text-decoration-underline" data-bs-toggle="tooltip"
+                   data-bs-title="GDP per capita is calculated by dividing the country's gross domestic product (GDP) by its total population at constant international dollar prices"
+                   data-bs-placement="left">GDP per capita:</label>
             <input type="range" class="form-range form-control" value="0.82" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*10000).toFixed(2) + ' US$'" step="0.01" id="gdp"
                    name="gdp">
-            <output class="input-group-text" >US$
+            <output class="input-group-text">US$
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="socialSupport" class="form-label">Social support:</label>
+            <label for="socialSupport" data-bs-toggle="tooltip"
+                    data-bs-title="This is the national average of the binary responses (either 0 or 1) to the question: “If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or not?”"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Social support:</label>
             <input type="range" class="form-range form-control" value="0.94" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = this.value" step="0.01" id="socialSupport"
                    name="socialSupport">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="This is the national average of the binary responses (either 0 or 1) to the question: “If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or not?”"
-                    data-bs-placement="right"> 0.82
+            <output class="input-group-text"> 0.82
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="lifeExpectancy" class="form-label">Healthy life expectancy:</label>
+            <label for="lifeExpectancy" data-bs-toggle="tooltip"
+                    data-bs-title="Healthy life expectancy at birth in this country" data-bs-placement="left" class="form-label text-decoration-underline"">Healthy life expectancy:</label>
             <input type="range" class="form-range form-control" value="0.82" min="0.02" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100) + ' years'" step="0.01" id="lifeExpectancy"
                    name="lifeExpectancy">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="Healthy life expectancy at birth in this country" data-bs-placement="right"> years
+            <output class="input-group-text"> years
             </output>
         </div>
 
         <div class="question input-group mb-3"
         >
-            <label for="freedom" class="form-label">Freedom to make life choices:</label>
+            <label for="freedom" data-bs-toggle="tooltip"
+                    data-bs-title="This is the national average of responses (either 0 or 1) to the question: “Are you satisfied or dissatisfied with your freedom to choose what you do with your life?”"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Freedom to make life choices:</label>
             <input type="range" class="form-range form-control" value="0.96" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = this.value" step="0.01" id="freedom" name="freedom">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="This is the national average of responses (either 0 or 1) to the question: “Are you satisfied or dissatisfied with your freedom to choose what you do with your life?”"
-                    data-bs-placement="right"> 0.96
+            <output class="input-group-text"> 0.96
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="generosity" class="form-label">Generosity:</label>
+            <label for="generosity" data-bs-toggle="tooltip"
+                    data-bs-title="This is the residual of the regressing national average in response to the question: “Have you donated money to a charity in the past month?” on GDP per capita"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Generosity:</label>
             <input type="range" class="form-range form-control" value="0.12" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = this.value" step="0.01"
                    id="generosity" name="generosity">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="This is the residual of the regressing national average in response to the question: “Have you donated money to a charity in the past month?” on GDP per capita"
-                    data-bs-placement="right"> 0.12
+            <output class="input-group-text"> 0.12
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="corruption" class="form-label">Perceptions of corruption:</label>
+            <label for="corruption" data-bs-toggle="tooltip"
+                    data-bs-title="This is the national average of the survey responses to two questions: “Is corruption widespread throughout the government or not?” and “Is corruption widespread within businesses or not?” The overall perception is just the average of the two 0-or-1 responses"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Perceptions of corruption:</label>
             <input type="range" class="form-range form-control" value="0.003" min="0.001" max="0.99"
                    oninput="this.nextElementSibling.value = this.value" step="0.001"
                    id="corruption" name="corruption">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="This is the national average of the survey responses to two questions: “Is corruption widespread throughout the government or not?” and “Is corruption widespread within businesses or not?” The overall perception is just the average of the two 0-or-1 responses"
-                    data-bs-placement="right"> 0.003
+            <output class="input-group-text"> 0.003
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="population" class="form-label">Population:</label>
+            <label for="population" data-bs-toggle="tooltip"
+                    data-bs-title="This is the number of people living in the area of the country. From 1 million to 9.8 billion people"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Population:</label>
             <input type="range" class="form-range form-control" value="0.26" min="0.0001" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*10000000000)+ ' people'" step="0.01"
                    id="population" name="population">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="This is the number of people living in the area of the country. From 1 million to 9.8 billion people"
-                    data-bs-placement="right"> people
+            <output class="input-group-text"> people
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="growthRate" class="form-label">Growth rate:</label>
+            <label for="growthRate" data-bs-toggle="tooltip"
+                    data-bs-title="Growth rate stands for the annual average rate of change of population size in this country"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Growth rate:</label>
             <input type="range" class="form-range form-control" value="0.23" min="-0.50" max="0.50"
                    oninput="this.nextElementSibling.value = this.value" step="0.01"
                    id="growthRate" name="growthRate">
-            <output class="input-group-text" data-bs-toggle="tooltip"
-                    data-bs-title="Growth rate stands for the annual average rate of change of population size in this country"
-                    data-bs-placement="right">0.23
+            <output class="input-group-text">0.23
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="powerDistance" class="form-label">Power distance:</label>
+            <label for="powerDistance" data-bs-toggle="tooltip" data-bs-title="A high power distance index indicates that a culture accepts inequity and power differences, encourages bureaucracy, and shows high respect for rank and authority.
+A low power distance index indicates that a culture encourages flat organizational structures that feature decentralized decision-making responsibility, participative management style, and emphasis on power distribution."
+                    data-bs-placement="left" class="form-label text-decoration-underline">Power distance:</label>
             <input type="range" class="form-range form-control" value="0.67" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="powerDistance" name="powerDistance">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high power distance index indicates that a culture accepts inequity and power differences, encourages bureaucracy, and shows high respect for rank and authority.
-A low power distance index indicates that a culture encourages flat organizational structures that feature decentralized decision-making responsibility, participative management style, and emphasis on power distribution."
-                    data-bs-placement="right">67
+            <output class="input-group-text">67
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="individualism" class="form-label">Individualism:</label>
+            <label for="individualism" data-bs-toggle="tooltip" data-bs-title="A high individualism index indicates that there is a greater importance placed on attaining personal goals. A person’s self-image in this category is defined as “I.”
+A low individualism index  indicates that there is a greater importance placed on the goals and well-being of the group. A person’s self-image in this category is defined as “We.”"
+                    data-bs-placement="left" class="form-label text-decoration-underline">Individualism:</label>
             <input type="range" class="form-range form-control" value="0.20" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="individualism" name="individualism">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high individualism index indicates that there is a greater importance placed on attaining personal goals. A person’s self-image in this category is defined as “I.”
-A low individualism index  indicates that there is a greater importance placed on the goals and well-being of the group. A person’s self-image in this category is defined as “We.”"
-                    data-bs-placement="right">20
+            <output class="input-group-text">20
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="masculinity" class="form-label">Masculinity:</label>
+            <label for="masculinity" data-bs-toggle="tooltip" data-bs-title="A high masculinity index comes with the following characteristics: distinct gender roles, assertive, and concentrated on material achievements and wealth-building.
+A low masculinity index comes with the following characteristics: fluid gender roles, modest, nurturing, and concerned with the quality of life."
+                    data-bs-placement="left" class="form-label text-decoration-underline">Masculinity:</label>
             <input type="range" class="form-range form-control" value="0.50" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="masculinity" name="masculinity">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high masculinity index comes with the following characteristics: distinct gender roles, assertive, and concentrated on material achievements and wealth-building.
-A low masculinity index comes with the following characteristics: fluid gender roles, modest, nurturing, and concerned with the quality of life."
-                    data-bs-placement="right">50
+            <output class="input-group-text">50
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="uncertainty" class="form-label">Uncertainty avoidance:</label>
+            <label for="uncertainty" data-bs-toggle="tooltip" data-bs-title="A high uncertainty avoidance index indicates a low tolerance for uncertainty, ambiguity, and risk-taking. The unknown is minimized through strict rules, regulations, etc.
+A low uncertainty avoidance index indicates a high tolerance for uncertainty, ambiguity, and risk-taking. The unknown is more openly accepted, and there are lax rules, regulations, etc."
+                    data-bs-placement="left" class="form-label text-decoration-underline">Uncertainty avoidance:</label>
             <input type="range" class="form-range form-control" value="0.40" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="uncertainty" name="uncertainty">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high uncertainty avoidance index indicates a low tolerance for uncertainty, ambiguity, and risk-taking. The unknown is minimized through strict rules, regulations, etc.
-A low uncertainty avoidance index indicates a high tolerance for uncertainty, ambiguity, and risk-taking. The unknown is more openly accepted, and there are lax rules, regulations, etc."
-                    data-bs-placement="right">40
+            <output class="input-group-text">40
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="longTerm" class="form-label">Long term orientation:</label>
+            <label for="longTerm" data-bs-toggle="tooltip" data-bs-title="A high long-term orientation index shows focus on the future and involves delaying short-term success or gratification in order to achieve long-term success. Long-term orientation emphasizes persistence, perseverance, and long-term growth.
+A low long-term orientation index shows focus on the near future, involves delivering short-term success or gratification, and places a stronger emphasis on the present than the future. Short-term orientation emphasizes quick results."
+                    data-bs-placement="left" class="form-label text-decoration-underline">Long term orientation:</label>
             <input type="range" class="form-range form-control" value="0.57" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="longTerm" name="longTerm">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high long-term orientation index shows focus on the future and involves delaying short-term success or gratification in order to achieve long-term success. Long-term orientation emphasizes persistence, perseverance, and long-term growth.
-A low long-term orientation index shows focus on the near future, involves delivering short-term success or gratification, and places a stronger emphasis on the present than the future. Short-term orientation emphasizes quick results."
-                    data-bs-placement="right">57
+            <output class="input-group-text">57
             </output>
         </div>
 
         <div class="question input-group mb-3">
-            <label for="indulgence" class="form-label">Indulgence:</label>
+            <label for="indulgence" data-bs-toggle="tooltip" data-bs-title="A high indulgence index indicates that society allows relatively free gratification related to enjoying life and having fun.
+A low indulgence index indicates that society suppresses gratification of needs and regulates it through social norms."
+                    data-bs-placement="left" class="form-label text-decoration-underline">Indulgence:</label>
             <input type="range" class="form-range form-control" value="0.82" min="0.01" max="0.99"
                    oninput="this.nextElementSibling.value = (this.value*100)" step="0.01"
                    id="indulgence" name="indulgence">
-            <output class="input-group-text" data-bs-toggle="tooltip" data-bs-title="A high indulgence index indicates that society allows relatively free gratification related to enjoying life and having fun.
-A low indulgence index indicates that society suppresses gratification of needs and regulates it through social norms."
-                    data-bs-placement="right">82
+            <output class="input-group-text">82
             </output>
         </div>
 
@@ -228,6 +231,12 @@ A low indulgence index indicates that society suppresses gratification of needs 
         <button type="submit" class="submit-btn btn btn-primary">Submit
         </button>
     </form>
+    <div>
+        <small> Some other variables
+        such as population and Hofstede's Cultural Dimension variables were add to the original dataset and are also
+        present here.
+        </small>
+    </div>
 </div>
 </body>
 
@@ -236,8 +245,6 @@ A low indulgence index indicates that society suppresses gratification of needs 
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 });
-
-
 
 </script>
 </html>
