@@ -1,6 +1,8 @@
 # World_Happiness
 2021 World's Happiness Report Analysis
-oday, life satisfaction and happiness are central research areas in the social sciences. The usual measures of economic prosperity, such as GDP per capita, are often suggested by social scientists to be supplemented with assessments of subjective well-being.  But how can happiness be measured?
+
+Today, life satisfaction and happiness are central research areas in the social sciences. The usual measures of economic prosperity, such as GDP per capita, are often suggested by social scientists to be supplemented with assessments of subjective well-being.  But how can happiness be measured?
+
 The integration of the World Happiness 2021 project into our business aims to inform strategic decisions, optimize performance, and engage stakeholders through insights on happiness and well-being. The technical integration involves data preprocessing, exploratory analysis, statistical modeling, and visualization to extract meaningful insights.
 From the economic point of view, it can enhance decision-making, optimize performance, and attract socially conscious stakeholders, contributing to the organization's strategic goals and long-term sustainability. It contributes to scientific knowledge by validating or extending previous research, generating new insights, and informing policy discussions on happiness, well-being, and quality of life.
 Objectives
